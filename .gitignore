@@ -1,0 +1,8 @@
+.idea
+
+# VirtualEnv
+bin
+include
+lib
+
+pip-selfcheck.json
