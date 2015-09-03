@@ -1,5 +1,5 @@
 from PIL import Image
-from src import gaus, threader
+from src import gaus, threader, gui
 
 __author__ = 'kitsu'
 
@@ -23,8 +23,11 @@ def main():
 
     pix = im.load()
     buf = buffer.load()
+    upd = im.height / 10
 
     for y in range(0, im.height):
+        if y % upd == 0:
+            print("Readiness: ", y/upd * 10, "%")
         for x in range(0, im.width):
             while threader.Threader.threads > 50:
                 1
@@ -33,8 +36,9 @@ def main():
     while threader.Threader.threads > 0:
         1
     buffer.save("img/NoiseProcessed3.png")
-    # from src import gui
 
+    # win = gui.MainWindow(buffer)
+    # win.show()
 
 if __name__ == "__main__":
     main()
