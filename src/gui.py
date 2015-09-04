@@ -1,6 +1,6 @@
-from PIL import ImageTk
 from tkinter import *
-import main, threader
+from PIL import ImageTk
+import main
 
 root = Tk()
 root.title('Gaussian filter')
@@ -56,8 +56,7 @@ class MainWindow(Frame):
                                   sigma=float(self.sigma_entry.get()),
                                   filters=int(self.filter_entry.get()))
         self.grid_forget()
-        im = []
-        self.canvas = []
+        self.im = []
         for i in range(filters):
             # self.canvas.append(Canvas(master=self.frame))
             # img = ImageTk.PhotoImage(buffer[i])

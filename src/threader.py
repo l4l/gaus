@@ -33,8 +33,13 @@ class Threader (threading.Thread):
         LineThreader.id += 1
         self.id = LineThreader.id
         self.fun = fun
+        self.ready = False
+        self.result = []
 
     def run(self):
         LineThreader.threads += 1
-        self.fun()
+        self.result = self.fun()
         LineThreader.threads -= 1
+
+    def is_ready(self):
+        return self.ready
