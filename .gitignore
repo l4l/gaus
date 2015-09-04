@@ -1,8 +1,11 @@
 .idea
 
+src/__pycache__
+
 # VirtualEnv
 bin
 include
 lib
 
 pip-selfcheck.json
+
