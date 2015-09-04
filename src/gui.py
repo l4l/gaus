@@ -1,11 +1,23 @@
-import Pmw
+from PIL import ImageTk
+from tkinter import *
 
-root = Pmw.initialise()
 
-# Make the labels line up neatly
-Pmw.alignlabels(())
+class MainWindow:
+    def __init__(self, img, size=3):
+        self.root = Tk()
+        self.im = []
+        for i in range(size):
+            self.im.append(ImageTk.PhotoImage(img[i]))
+        self.label = []
+        for i in range(size):
+            im = ImageTk.PhotoImage(img[i])
+            self.label.append(Label(image=self.im[i]))
+            self.label[i].pack()
 
-root.title('Pmw megawidgets example')
-root.mainloop()
+        self.root.title('Gaussian filter')
+
+    def show(self):
+        self.root.mainloop()
+
 
 __author__ = 'kitsu'
