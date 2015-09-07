@@ -9,9 +9,9 @@ def init(img_dir, proc_dir, file, ext, sigma, filters) -> []:
     buffer = [Image.new("RGB", (im.width, im.height)) for i in range(filters)]
 
     print("Sigma is ", sigma)
-    size = int(sigma * 3)
+    size = int(sigma * 6)
     if size % 2 == 0:
-        size -= 1
+        size += 1
 
     k = gaus.kernel(size, sigma)
     kx = gaus.kernel_dx(size, sigma)
@@ -47,6 +47,8 @@ def upd_buffer(image, buffer, size, kernel, name, filename):
             print(datetime.datetime.now())
             print("Readiness of", name, " is ", y/upd * 10, "%\n")
         for x in range(0, image.width):
+            # f = gaus.get_filtered(pix, x, y, size, kernel)
+            # buf[(x, y)] = (abs(f[0]) % 256, abs(f[1]) % 256, abs(f[2]) % 256)
             buf[(x, y)] = gaus.get_filtered(pix, x, y, size, kernel)
         # while threader.LineThreader.threads > 20:
         #     1
